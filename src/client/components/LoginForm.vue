@@ -1,14 +1,15 @@
 <script setup>
 import { ref } from 'vue';
 
-const username = ref('');
+const email = ref('');
 const password = ref('');
 
 const login = () => {
   // Handle login logic here
-  console.log('Username:', username.value);
+  console.log('Email:', email.value);
   console.log('Password:', password.value);
 };
+
 </script>
 
 <template>
@@ -16,15 +17,15 @@ const login = () => {
     <h2>Login</h2>
     <form @submit.prevent="login">
       <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" v-model="username">
+        <input type="text" id="email" placeholder="email" v-model="email">
       </div>
+      <br>
       <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" v-model="password">
+
+        <input type="password" id="password" placeholder="password" v-model="password">
       </div>
       <button type="submit">Login</button>
-      <button type="register">Register</button>
+      <button @click="register" type="submit">Register</button>
     </form>
   </div>
 </template>
