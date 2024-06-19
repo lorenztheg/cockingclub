@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import AuthenticationService from "@/client/services/AuthenticationService";
 
+
 const email = ref('');
 const password = ref('');
 
@@ -28,9 +29,3 @@ const register = async () => {
     </form>
   </div>
 </template>
-
-<style scoped>
-  .register-form {
-    margin-top: 60px;
-  }
-</style>

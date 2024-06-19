@@ -19,5 +19,21 @@ export default defineComponent({
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+
+  /* Responsive designs for various screen widths */
+  @media (max-width: 600px) {
+    #app {
+    }
+  }
+
+  @media (min-width: 601px) and (max-width: 1024px) {
+    #app {
+    }
+  }
+
+  @media (min-width: 1025px) {
+    #app {
+    }
+  }
 }
 </style>
