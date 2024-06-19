@@ -9,5 +9,8 @@ module.exports = {
             host: process.env.HOST || 'localhost',
             storage: './tracker.sqlite3'
         }
+    },
+    authentication: {
+        jwtSecret: process.env.JWT_SECRET || 'secret'
     }
 }
