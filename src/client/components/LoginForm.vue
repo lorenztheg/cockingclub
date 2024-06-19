@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import AuthenticationService from "@/client/services/AuthenticationService";
+import router from "@/client/router";
 
 const email = ref('');
 const password = ref('');
@@ -8,6 +9,7 @@ const password = ref('');
 const login = async () => {
   const response = await AuthenticationService.login(email.value, password.value);
   console.log(response.data);
+  await router.push('/dashboard');
 };
 </script>
 

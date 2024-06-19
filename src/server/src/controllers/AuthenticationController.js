@@ -43,6 +43,13 @@ module.exports = {
                 });
             }
             const userJson = user.toJSON();
+            console.log('Setting cookie ' + jwtSignUser(userJson));
+            res.cookie('token', jwtSignUser(userJson), {
+                httpOnly: true,
+                secure: false,
+                maxAge: 3600000,
+                sameSite: 'lax'
+            });
             res.send({
                 user: userJson,
                 token: jwtSignUser(userJson),
