@@ -9,7 +9,6 @@ function jwtSignUser (user) {
     });
 }
 
-
 module.exports = {
     async register (req, res) {
         try {

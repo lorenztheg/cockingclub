@@ -8,8 +8,11 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
 
-
 const app = express();
+
+app.use(morgan('combined'));
+app.use(bodyParser.json());
+app.use(cors());
 
 app.use(cookieParser());
 app.use(session({
@@ -19,9 +22,6 @@ app.use(session({
     cookie: { secure: false }
 }));
 
-app.use(morgan('combined'));
-app.use(bodyParser.json());
-app.use(cors());
 
 require('./routes')(app);
 
