@@ -15,19 +15,18 @@ const register = async () => {
 </script>
 
 <template>
-  <div class="register-form">
-    <h1>Cooking Club</h1>
+  <div class="register-form" className="p-5 my-36">
+    <h1 className="text-5xl font-bold mb-5">Cooking Club</h1>
     <form @submit.prevent="register">
       <div>
-        <input id="email" v-model="email" placeholder="email" type="text">
+        <input className="mb-0.5" id="email" v-model="email" placeholder="E-Mail" type="text">
       </div>
-      <br>
       <div>
-        <input id="password" v-model="password" placeholder="password" type="password">
+        <input id="password" v-model="password" placeholder="Password" type="password">
       </div>
       <br>
       <button type="submit">Register</button>
-      <p>You do already have an account? <router-link to="/">Login here</router-link></p>
+      <button type="button" onclick="window.location.href='/'">Login</button>
     </form>
   </div>
 </template>
