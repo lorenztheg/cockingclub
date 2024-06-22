@@ -10,7 +10,7 @@ const password = ref('');
 const register = async () => {
   const response = await AuthenticationService.register(email.value, password.value);
   console.log(response.data);
-  await router.push('/login');
+  await router.push('/');
 };
 </script>
 
