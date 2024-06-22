@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        text-align: center;
+    }
+}
+
+@layer components {
+    login-form {
+        margin-top: 60px;
+    }
+    login-form > h1 {
+        margin-bottom: 20px;
+    }
+    register-form {
+        margin-top: 60px;
+    }
+    input {
+        width: 15%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        text-align: left;
+    }
+    input::placeholder {
+        text-align: left;
+        display: flex;
+    }
+    button {
+        background-color: #00CED1;
+        padding: 12px 38px 12px 38px;
+        margin-right: 3px;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+}
