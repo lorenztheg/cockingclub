@@ -4,13 +4,24 @@ const cors = require('cors');
 const morgan = require('morgan');
 const config = require('./config/config')
 const {sequelize} = require('./models')
-
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
 
 
 const app = express();
+
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(cors());
+
+app.use(cookieParser());
+app.use(session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}));
+
 
 require('./routes')(app);
 
