@@ -4,7 +4,7 @@ node_modules
 
 
 # local env files
-.env.local
+src/server/.env
 .env.*.local
 
 # Log files

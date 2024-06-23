@@ -5,11 +5,17 @@ import router from "@/client/router";
 
 const email = ref('');
 const password = ref('');
+const errorMessages = ref('');
 
 const login = async () => {
-  const response = await AuthenticationService.login(email.value, password.value);
-  console.log(response.data);
-  await router.push('/dashboard');
+  try {
+    const response = await AuthenticationService.login(email.value, password.value);
+    console.log(response.data);
+    await router.push('/dashboard');
+  }
+  catch (error) {
+    errorMessages.value = 'Login failed. Please check your credentials and try again.';
+  }
 };
 </script>
 
@@ -27,6 +33,7 @@ const login = async () => {
       <button type="submit">Login</button>
       <button type="button" onclick="window.location.href='/register'">Register</button>
     </form>
+    <p>{{ errorMessages }}</p>
   </div>
 </template>
 

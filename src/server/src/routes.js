@@ -1,4 +1,5 @@
 const AuthenticationController = require('./controllers/AuthenticationController');
+const EdamamController = require('./controllers/apis/edamam');
 
 module.exports= (app) => {
 
@@ -10,5 +11,12 @@ module.exports= (app) => {
         AuthenticationController.login
     );
 
+    app.get('/recipes',
+        EdamamController.getRecipes
+    );
+
+    app.get('/nutrients',
+        EdamamController.getNutrients
+    );
 
 }

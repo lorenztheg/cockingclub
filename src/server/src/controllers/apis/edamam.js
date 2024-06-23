@@ -1,9 +1,11 @@
+require('dotenv').config({path:'.env'});
 const axios = require('axios');
+
 
 
 const getRecipes = async (req, res) => {
     const { query } = req.query;
-    const url = `https://api.edamam.com/search?q=${query}&app_id=${process.env.EDAMAM_APP_ID}&app_key=${process.env.EDAMAM_APP_KEY}`;
+    const url = `https://api.edamam.com/search?q=${query}&app_id=${process.env.RECIPE_API_ID}&app_key=${process.env.RECIPE_API_KEY}`;
     try {
         const response = await axios.get(url);
         res.send(response.data);
@@ -14,7 +16,7 @@ const getRecipes = async (req, res) => {
 
 const getNutrients = async (req, res) => {
     const { query } = req.query;
-    const url = `https://api.edamam.com/api/nutrition-data?app_id=${process.env.EDAMAM_APP_ID}&app_key=${process.env.EDAMAM_APP_KEY}&ingr=${query}`;
+    const url = `https://api.edamam.com/api/nutrition-data?app_id=${process.env.NUTRITION_API_ID}&app_key=${process.env.NUTRITION_API_KEY}&ingr=${query}`;
     try {
         const response = await axios.get(url);
         res.send(response.data);

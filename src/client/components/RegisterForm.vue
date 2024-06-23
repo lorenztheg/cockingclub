@@ -6,11 +6,17 @@ import router from "@/client/router";
 
 const email = ref('');
 const password = ref('');
+const errorMessages = ref('');
 
 const register = async () => {
-  const response = await AuthenticationService.register(email.value, password.value);
-  console.log(response.data);
-  await router.push('/');
+  try {
+    const response = await AuthenticationService.register(email.value, password.value);
+    console.log(response.data);
+    await router.push('/');
+  }
+  catch (error) {
+    errorMessages.value = 'Registration failed. Please try again.';
+  }
 };
 </script>
 
@@ -28,5 +34,6 @@ const register = async () => {
       <button type="submit">Register</button>
       <button type="button" onclick="window.location.href='/'">Login</button>
     </form>
+    <p>{{ errorMessages }}</p>
   </div>
 </template>
