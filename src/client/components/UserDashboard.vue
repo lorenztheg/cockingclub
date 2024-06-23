@@ -1,5 +1,6 @@
 <script setup>
 import RecipeSearch from "@/client/components/RecipeSearch.vue";
+import FooterComponent from '@/client/components/FooterComponent.vue';
 </script>
 
 <template>
@@ -10,6 +11,7 @@ import RecipeSearch from "@/client/components/RecipeSearch.vue";
   <div>
     <RecipeSearch />
   </div>
+  <FooterComponent />
 </template>
 
 <style scoped>
