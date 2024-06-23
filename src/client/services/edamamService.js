@@ -12,5 +12,8 @@ export default {
     },
     deleteRecipe (id) {
         return API().delete(`recipes/${id}`);
+    },
+    saveRecipeToMealPlan(recipe) {
+        return API().post('mealPlan', recipe);
     }
 }
