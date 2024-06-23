@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import edamamService from "@/client/services/edamamService";
+import HeadNavBarComponent from "@/client/components/HeadNavBarComponent.vue";
 
 const savedRecipes = ref([]);
 
@@ -13,6 +14,7 @@ onMounted(fetchSavedRecipes);
 </script>
 
 <template>
+  <HeadNavBarComponent />
   <div class="MealPlanner">
     <h2>Your Meal Plan</h2>
     <div v-if="savedRecipes.length">
