@@ -1,16 +1,20 @@
 <script setup>
 import { ref } from 'vue';
+import { useStore } from 'vuex'; // Importiere Vuex
 import AuthenticationService from "@/client/services/AuthenticationService";
 import router from "@/client/router";
 
 const email = ref('');
 const password = ref('');
 const errorMessages = ref('');
+const store = useStore(); // Verwende Vuex Store
 
 const login = async () => {
   try {
     const response = await AuthenticationService.login(email.value, password.value);
     console.log(response.data);
+    // Speichere die Benutzer-ID im Store
+    await store.dispatch('login', response.data.user);
     await router.push('/dashboard');
   }
   catch (error) {

@@ -6,14 +6,24 @@ const query = ref('');
 const health = ref('');
 const diet = ref('');
 const recipes = ref([]);
+const error = ref(null);
 
 const searchRecipes = async () => {
-  const response = await edamamService.getRecipes(query.value, health.value, diet.value);
-  recipes.value = response.data.hits;
+  try {
+    const response = await edamamService.getRecipes(query.value);
+    recipes.value = response.data.hits;
+  } catch (err) {
+    error.value = 'Error fetching recipes';
+  }
 };
 
-const saveRecipe = async (recipe) => {
-  await edamamService.saveRecipeToMealPlan(recipe);
+const saveRecipeToPlan = async (recipe) => {
+  try {
+    await edamamService.saveRecipe(recipe);
+    console.log('Recipe saved successfully');
+  } catch (error) {
+    console.error('Error saving recipe:', error);
+  }
 };
 
 onMounted(searchRecipes);
@@ -32,14 +42,15 @@ onMounted(searchRecipes);
       <br>
       <button class="mt-1" type="submit">Start Cooking</button>
     </form>
+    <div v-if="error">{{ error }}</div>
     <div v-if="recipes.length">
       <h2 class="text-xl m-2 p-2">Your Results</h2>
       <div class="recipe-grid" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 m-10">
         <div v-for="recipe in recipes" :key="recipe.recipe.uri" class="recipe-card">
           <img :src="recipe.recipe.image" alt="Recipe Image">
           <div class="recipe-details">
-          <h3>{{ recipe.recipe.label }}</h3>
-          <button @click="saveRecipe(recipe.recipe)">Add to Plan</button>
+            <h3>{{ recipe.recipe.label }}</h3>
+            <button @click="saveRecipeToPlan(recipe.recipe)">Add to Plan</button>
           </div>
         </div>
       </div>

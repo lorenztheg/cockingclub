@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    return sequelize.define('User', {
+    const User = sequelize.define('User', {
         email: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -10,4 +10,10 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         }
     });
+
+    User.associate = function(models) {
+        User.hasMany(models.Recipe, { foreignKey: 'userId' });
+    };
+
+    return User;
 };

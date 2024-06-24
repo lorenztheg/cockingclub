@@ -1,8 +1,8 @@
-const {User} = require('../models');
+const { User } = require('../models');
 const jwt = require('jsonwebtoken');
 const config = require('../config/config');
 
-function jwtSignUser (user) {
+function jwtSignUser(user) {
     const ONE_WEEK = 60 * 60 * 24 * 7;
     return jwt.sign(user, config.authentication.jwtSecret, {
         expiresIn: ONE_WEEK
@@ -10,7 +10,7 @@ function jwtSignUser (user) {
 }
 
 module.exports = {
-    async register (req, res) {
+    async register(req, res) {
         try {
             const user = await User.create(req.body);
             res.send(user.toJSON());
@@ -22,9 +22,9 @@ module.exports = {
         }
     },
 
-    async login (req, res) {
+    async login(req, res) {
         try {
-            const {email, password} = req.body;
+            const { email, password } = req.body;
             const user = await User.findOne({
                 where: {
                     email: email
@@ -43,7 +43,8 @@ module.exports = {
             }
             const userJson = user.toJSON();
             console.log('Setting cookie ' + jwtSignUser(userJson));
-            res.cookie('token', jwtSignUser(userJson), {
+            const token = jwtSignUser({ id: user.id });
+            res.cookie('token', token, {
                 httpOnly: true,
                 secure: false,
                 maxAge: 3600000,
@@ -51,7 +52,7 @@ module.exports = {
             });
             res.send({
                 user: userJson,
-                token: jwtSignUser(userJson),
+                token: token,
             });
         } catch (err) {
             console.log(err);
@@ -59,5 +60,18 @@ module.exports = {
                 error: 'An error has occured trying to log in.'
             });
         }
+    },
+    async logout(req, res) {
+    try {
+        res.clearCookie('token');
+        res.status(200).send({
+            message: 'Logout successful'
+        });
+    } catch (err) {
+        res.status(500).send({
+            error: 'An error has occurred trying to log out.'+err
+        });
     }
+}
+
 }

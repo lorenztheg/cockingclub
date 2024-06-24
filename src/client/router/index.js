@@ -3,6 +3,7 @@ import LoginForm from '@/client/components/LoginForm.vue';
 import UserDashboard from "@/client/components/UserDashboard.vue";
 import RegisterForm from "@/client/components/RegisterForm.vue";
 import MealPlanner from "@/client/components/MealPlanner.vue";
+import ProfilePage from "@/client/components/ProfilePage.vue";
 
 
 
@@ -26,6 +27,11 @@ const routes = [
         path:'/planner',
         name: 'MealPlanner',
         component: MealPlanner
+    },
+    {
+        path: '/profile/:id',
+        name: 'ProfilePage',
+        component: ProfilePage
     }
 ];
 
