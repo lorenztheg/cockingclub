@@ -10,7 +10,7 @@ import HeadNavBarComponent from '@/client/components/HeadNavBarComponent.vue';
     <h1 class="mt-16 text-5xl font-bold">Meals</h1>
     <p class="text-2xl m-2">Welcome to the Cooking Club dashboard!</p>
   </div>
-  <div>
+  <div class="flex-grow">
     <RecipeSearch />
   </div>
   <FooterComponent />

@@ -24,11 +24,11 @@ onMounted(searchRecipes);
     <h2 class="text-l">Search your Recipes:</h2>
     <form @submit.prevent="searchRecipes">
       <label for="query">Your Query: </label>
-      <input id="query" v-model="query" type="text" placeholder="Query">
+      <input id="query" v-model="query" type="text" placeholder="Query" class="w-full sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-1/6">
       <label for="health">Your Health Search: </label>
-      <input id="health" v-model="health" type="text" placeholder="Health">
+      <input id="health" v-model="health" type="text" placeholder="Health" class="w-full sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-1/6">
       <label for="diet">Your Diet: </label>
-      <input id="diet" v-model="diet" type="text" placeholder="Diet">
+      <input id="diet" v-model="diet" type="text" placeholder="Diet" class="w-full sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-1/6">
       <br>
       <button class="mt-1" type="submit">Start Cooking</button>
     </form>
