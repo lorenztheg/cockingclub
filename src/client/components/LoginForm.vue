@@ -24,10 +24,10 @@ const login = async () => {
     <h1 className="text-5xl font-bold mb-5">Cooking Club</h1>
     <form @submit.prevent="login">
       <div>
-        <input className="mb-0.5" id="email" v-model="email" placeholder="E-Mail" type="text">
+        <input className="mb-0.5 w-full sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/4" id="email" v-model="email" placeholder="E-Mail" type="text">
       </div>
       <div>
-        <input id="password" v-model="password" placeholder="Password" type="password">
+        <input className="w-full sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/4" id="password" v-model="password" placeholder="Password" type="password">
       </div>
       <br>
       <button type="submit">Login</button>

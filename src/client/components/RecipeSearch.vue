@@ -20,7 +20,7 @@ onMounted(searchRecipes);
 </script>
 
 <template>
-  <div class="recipe-search">
+  <div class="recipe-search pb-16">
     <h2 class="text-l">Search your Recipes:</h2>
     <form @submit.prevent="searchRecipes">
       <label for="query">Your Query: </label>
@@ -33,9 +33,9 @@ onMounted(searchRecipes);
       <button class="mt-1" type="submit">Start Cooking</button>
     </form>
     <div v-if="recipes.length">
-      <h2>Recipes</h2>
+      <h2 class="text-l">Your Results</h2>
       <div class="recipe-grid">
-        <div v-for="recipe in recipes" :key="recipe.recipe.uri" class="recipe-card">
+        <div v-for="recipe in recipes" :key="recipe.recipe.uri" class="recipe-card m-2">
           <img :src="recipe.recipe.image" alt="Recipe Image">
           <div class="recipe-details">
           <h3>{{ recipe.recipe.label }}</h3>
