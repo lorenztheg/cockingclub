@@ -38,4 +38,7 @@ module.exports= (app) => {
         AuthMiddleware,
         RecipeController.saveRecipe
     );
+    app.put('/update/:userId',
+        UserController.updateUser
+    );
 }

@@ -4,6 +4,7 @@ import UserDashboard from "@/client/components/UserDashboard.vue";
 import RegisterForm from "@/client/components/RegisterForm.vue";
 import MealPlanner from "@/client/components/MealPlanner.vue";
 import ProfilePage from "@/client/components/ProfilePage.vue";
+import UpdateProfile from '@/client/components/UpdateProfile.vue';
 
 
 
@@ -32,6 +33,11 @@ const routes = [
         path: '/profile/:id',
         name: 'ProfilePage',
         component: ProfilePage
+    },
+    {
+        path: '/update/:id',
+        name: 'UpdateProfile',
+        component: UpdateProfile
     }
 ];
 

@@ -36,6 +36,11 @@ onMounted(async () => {
     loading.value = false;
   }
 });
+
+const goToUpdateUser = () => {
+  const userId = route.params.id;
+  router.push({ name: 'UpdateProfile', params: { id: userId } }); // Redirect to update user page
+};
 </script>
 
 <template>
@@ -47,16 +52,17 @@ onMounted(async () => {
     <div v-else>
       <p>Email: {{ userEmail }}</p>
       <button @click="logout">Logout</button> <!-- Füge den Logout-Button hinzu -->
+      <button @click="goToUpdateUser">Update User</button>
     </div>
   </div>
 </template>
 
 <style scoped>
 button {
-  background-color: red;
   color: white;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
+  margin: 2px;
 }
 </style>
