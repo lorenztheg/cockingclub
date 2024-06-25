@@ -47,5 +47,32 @@ module.exports = {
                 error: 'An error occurred while trying to update the user'
             });
         }
+    },
+
+    async deleteUser(req, res) {
+        try {
+            const user = await User.findOne({
+                where: {
+                    id: req.params.userId
+                }
+            });
+
+            if (!user) {
+                return res.status(404).send({
+                    error: 'User not found'
+                });
+            }
+
+            await user.destroy();
+
+            res.send({
+                message: 'User deleted successfully'
+            });
+        } catch (error) {
+            console.error('Error deleting user:', error);
+            res.status(500).send({
+                error: 'An error occurred while trying to delete the user'
+            });
+        }
     }
 };

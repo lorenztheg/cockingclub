@@ -36,5 +36,13 @@ export default {
             throw error;
         });
     },
+    deleteUser(UserId) {
+        return API.delete(`delete/${UserId}`).then(response => {
+            return response.data;
+        }).catch(error => {
+            console.error("Delete User Error: ", error.response ? error.response.data : error.message);
+            throw error;
+        });
+    }
 }
 

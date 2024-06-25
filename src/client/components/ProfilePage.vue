@@ -9,6 +9,7 @@ const userEmail = ref('');
 const loading = ref(true);
 const route = useRoute();
 const router = useRouter();
+const deleteMessage = ref('');
 
 const logout = async () => {
   try {
@@ -37,9 +38,24 @@ onMounted(async () => {
   }
 });
 
-const goToUpdateUser = () => {
+const updateUser = () => {
   const userId = route.params.id;
   router.push({ name: 'UpdateProfile', params: { id: userId } }); // Redirect to update user page
+};
+
+const deleteUser = async () => {
+  try {
+    const userId = route.params.id;
+    console.log(`Deleting user with ID: ${userId}`);
+    const response = await AuthenticationService.deleteUser(userId);
+    deleteMessage.value = 'Delete successful! Redirecting...'; // Sets the update message
+    console.log(response.data);
+    setTimeout(async () => { // Wait 3 secounds before redirecting
+      await router.push('/');
+    }, 3000);
+  } catch (error) {
+    console.error('Error deleting user:', error);
+  }
 };
 </script>
 
@@ -52,8 +68,10 @@ const goToUpdateUser = () => {
     <div v-else>
       <p>Email: {{ userEmail }}</p>
       <button @click="logout">Logout</button> <!-- Füge den Logout-Button hinzu -->
-      <button @click="goToUpdateUser">Update User</button>
+      <button @click="updateUser">Update User</button>
+      <button @click="deleteUser">Delete User</button>
     </div>
+    <p>{{ deleteMessage }}</p>
   </div>
 </template>
 

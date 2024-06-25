@@ -41,4 +41,7 @@ module.exports= (app) => {
     app.put('/update/:userId',
         UserController.updateUser
     );
+    app.delete('/delete/:userId',
+        UserController.deleteUser
+    );
 }
