@@ -1,12 +1,16 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import edamamService from "@/client/services/edamamService";
+import RecipeDetailsModal from "@/client/components/RecipeDetailsModal.vue";
 
 const query = ref('');
 const health = ref('');
 const diet = ref('');
 const recipes = ref([]);
 const error = ref(null);
+
+const showRecipeModal = ref(false);
+const selectedRecipe = ref(null);
 
 const searchRecipes = async () => {
   try {
@@ -26,6 +30,20 @@ const saveRecipeToPlan = async (recipe) => {
   }
 };
 
+const openRecipeDetails = (recipe) => {
+  if (recipe) {
+    selectedRecipe.value = recipe;
+    showRecipeModal.value = true;
+  } else {
+    console.error('No recipe selected.');
+  }
+};
+
+const closeRecipeDetails = () => {
+  showRecipeModal.value = false;
+  selectedRecipe.value = null;
+};
+
 onMounted(searchRecipes);
 </script>
 
@@ -40,6 +58,7 @@ onMounted(searchRecipes);
       <label for="diet">Your Diet: </label>
       <input id="diet" v-model="diet" type="text" placeholder="Diet" class="w-full sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-1/6">
       <br>
+      <br>
       <button class="mt-1" type="submit">Start Cooking</button>
     </form>
     <div v-if="error">{{ error }}</div>
@@ -51,6 +70,7 @@ onMounted(searchRecipes);
           <div class="recipe-details">
             <h3>{{ recipe.recipe.label }}</h3>
             <button @click="saveRecipeToPlan(recipe.recipe)">Add to Plan</button>
+            <button @click="openRecipeDetails(recipe.recipe)">Info</button>
           </div>
         </div>
       </div>
@@ -58,6 +78,7 @@ onMounted(searchRecipes);
     <div v-else>
       <p>No recipes found.</p>
     </div>
+    <RecipeDetailsModal v-if="showRecipeModal" :recipe="selectedRecipe" @close="closeRecipeDetails" />
   </div>
 </template>
 
