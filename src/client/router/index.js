@@ -5,7 +5,8 @@ import RegisterForm from "@/client/components/RegisterForm.vue";
 import MealPlanner from "@/client/components/MealPlanner.vue";
 import ProfilePage from "@/client/components/ProfilePage.vue";
 import UpdateProfile from '@/client/components/UpdateProfile.vue';
-
+import ImprintPage from '@/client/components/ImprintPage.vue';
+import LegalPage from '@/client/components/LegalPage.vue';
 
 
 const routes = [
@@ -25,7 +26,7 @@ const routes = [
         component: UserDashboard
     },
     {
-        path:'/planner',
+        path: '/planner',
         name: 'MealPlanner',
         component: MealPlanner
     },
@@ -38,6 +39,16 @@ const routes = [
         path: '/update/:id',
         name: 'UpdateProfile',
         component: UpdateProfile
+    },
+    {
+        path: '/imprint',
+        name: 'ImprintPage',
+        component: ImprintPage
+    },
+    {
+        path: '/legal',
+        name: 'LegalPage',
+        component: LegalPage
     }
 ];
 

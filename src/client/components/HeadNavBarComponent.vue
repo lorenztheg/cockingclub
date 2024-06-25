@@ -44,6 +44,6 @@ const goToProfile = () => {
 
 <style scoped>
 nav {
-  background-color: #c1cdcd;
+  background-color: #eee0e5;
 }
 </style>

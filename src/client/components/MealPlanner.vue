@@ -2,6 +2,7 @@
 import HeadNavBarComponent from "@/client/components/HeadNavBarComponent.vue";
 import { ref, onMounted } from 'vue';
 import edamamService from "@/client/services/edamamService";
+import FooterComponent from '@/client/components/FooterComponent.vue';
 
 const savedRecipes = ref([]);
 
@@ -46,6 +47,7 @@ onMounted(getSavedRecipes);
       </div>
     </div>
   </div>
+  <FooterComponent />
 </template>
 
 <style scoped>

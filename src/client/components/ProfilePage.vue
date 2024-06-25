@@ -4,6 +4,7 @@ import { useRoute, useRouter } from 'vue-router';
 import axios from 'axios';
 import AuthenticationService from "@/client/services/AuthenticationService"; // Importiere den AuthenticationService
 import HeadNavBarComponent from "@/client/components/HeadNavBarComponent.vue";
+import FooterComponent from '@/client/components/FooterComponent.vue';
 
 const userEmail = ref('');
 const loading = ref(true);
@@ -73,6 +74,7 @@ const deleteUser = async () => {
     </div>
     <p>{{ deleteMessage }}</p>
   </div>
+  <FooterComponent />
 </template>
 
 <style scoped>
@@ -81,6 +83,6 @@ button {
   border: none;
   padding: 10px 20px;
   cursor: pointer;
-  margin: 2px;
+  margin: 5px 2px 10px 2px;
 }
 </style>
