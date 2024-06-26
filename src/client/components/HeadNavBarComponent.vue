@@ -21,7 +21,6 @@ const goToProfile = () => {
   if (userId.value) {
     router.push(`/profile/${userId.value}`).catch(err => console.error(err));
   } else {
-    // Handle the case where user ID is not available
     console.error('User ID is not available');
   }
 };
@@ -33,7 +32,7 @@ const goToProfile = () => {
       <h4 class="text-xl font-bold">Cooking Club</h4>
     </div>
     <div>
-      <ul class="flex space-x-4">
+      <ul class="flex space-x-3 mr-8">
         <li><a @click="goToDashboard" class="text-blue-500 hover:text-blue-700">Meals</a></li>
         <li><a @click="goToPlanner" class="text-blue-500 hover:text-blue-700">Planner</a></li>
         <li><a @click="goToProfile" class="text-blue-500 hover:text-blue-700">Profile</a></li>

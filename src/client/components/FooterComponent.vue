@@ -8,7 +8,7 @@
       <p><a href="/dashboard">Home</a></p>
       <p><a href="/imprint">Impressum</a></p>
       <p><a href="/legal">Datenschutz</a></p>
-      <p><a href="/about-us">Über uns</a></p>
+      <p><a href="/about">Über uns</a></p>
       <p><a href="/contact">Kontakt</a></p>
     </div>
   </footer>

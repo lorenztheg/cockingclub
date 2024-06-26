@@ -7,6 +7,8 @@ import ProfilePage from "@/client/components/ProfilePage.vue";
 import UpdateProfile from '@/client/components/UpdateProfile.vue';
 import ImprintPage from '@/client/components/ImprintPage.vue';
 import LegalPage from '@/client/components/LegalPage.vue';
+import AboutUsPage from '@/client/components/AboutUsPage.vue';
+import ContactPage from '@/client/components/ContactPage.vue';
 
 
 const routes = [
@@ -49,6 +51,16 @@ const routes = [
         path: '/legal',
         name: 'LegalPage',
         component: LegalPage
+    },
+    {
+        path: '/about',
+        name: 'AboutUsPage',
+        component: AboutUsPage
+    },
+    {
+        path: '/contact',
+        name: 'ContactPage',
+        component: ContactPage
     }
 ];
 
