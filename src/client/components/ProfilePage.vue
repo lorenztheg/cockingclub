@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import {useToast} from 'vue-toastification';
 import axios from 'axios';
 import AuthenticationService from "@/client/services/AuthenticationService"; // Importiere den AuthenticationService
 import HeadNavBarComponent from "@/client/components/HeadNavBarComponent.vue";
@@ -10,7 +11,7 @@ const userEmail = ref('');
 const loading = ref(true);
 const route = useRoute();
 const router = useRouter();
-const deleteMessage = ref('');
+const toast = useToast();
 
 const logout = async () => {
   try {
@@ -49,12 +50,13 @@ const deleteUser = async () => {
     const userId = route.params.id;
     console.log(`Deleting user with ID: ${userId}`);
     const response = await AuthenticationService.deleteUser(userId);
-    deleteMessage.value = 'Delete successful! Redirecting...'; // Sets the update message
+    toast.success('Delete successful! Redirecting...'); // Sets the update message
     console.log(response.data);
     setTimeout(async () => { // Wait 3 secounds before redirecting
       await router.push('/');
     }, 3000);
   } catch (error) {
+    toast.error('Error while Deleting! Please try again.');
     console.error('Error deleting user:', error);
   }
 };

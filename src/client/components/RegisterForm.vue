@@ -2,20 +2,24 @@
 import { ref } from 'vue';
 import AuthenticationService from "@/client/services/AuthenticationService";
 import router from "@/client/router";
+import {useToast} from 'vue-toastification';
 
 
 const email = ref('');
 const password = ref('');
-const errorMessages = ref('');
+const toast = useToast();
 
 const register = async () => {
   try {
     const response = await AuthenticationService.register(email.value, password.value);
     console.log(response.data);
-    await router.push('/');
-  }
-  catch (error) {
-    errorMessages.value = 'Registration failed. Please try again.';
+    toast.success('Registration successful! Redirecting...')
+    setTimeout(async () => { // Wait 3 secounds before redirecting
+      await router.push('/');
+    }, 3000);
+  } catch (error) {
+    toast.error('Registration failed. Please try again.');
+    console.error('Error registering user:', error);
   }
 };
 </script>

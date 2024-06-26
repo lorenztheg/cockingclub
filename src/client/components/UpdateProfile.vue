@@ -3,26 +3,29 @@ import { ref } from 'vue';
 import AuthenticationService from "@/client/services/AuthenticationService";
 import router from "@/client/router";
 import {useRoute} from 'vue-router';
+import {useToast} from 'vue-toastification';
 
 
 const email = ref('');
 const password = ref('');
 const errorMessages = ref('');
-const updateMessage = ref('');
+
 const route = useRoute();
+const toast = useToast();
 
 const update = async () => {
   try {
     const UserId = route.params.id;
     const response = await AuthenticationService.updateUser(UserId, email.value, password.value);
-    updateMessage.value = 'Update successful! Redirecting...'; // Sets the update message
+    toast.success('Update successful! Redirecting...'); // Sets the update message
     console.log(response.data);
     setTimeout(async () => { // Wait 3 secounds before redirecting
       await router.push('/dashboard');
     }, 3000);
   }
   catch (error) {
-    errorMessages.value = 'Update failed. Please try again.';
+    toast.error('Update failed. Please try again.');
+    console.error('Error updating user:', error);
   }
 };
 

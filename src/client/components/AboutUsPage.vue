@@ -4,6 +4,7 @@ import FooterComponent from '@/client/components/FooterComponent.vue';
 </script>
 
 <template>
+  <!DOCTYPE html>
   <HeadNavBarComponent />
   <div class="about" className="mx-32 sm:px-16 md:px-24 lg:px-32 xl:px-48">
     <h1 class="text-2xl font-bold mb-3">Über uns</h1>

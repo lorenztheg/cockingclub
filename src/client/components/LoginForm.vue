@@ -1,13 +1,14 @@
 <script setup>
 import { ref } from 'vue';
 import { useStore } from 'vuex'; // Importiere Vuex
+import {useToast} from 'vue-toastification';
 import AuthenticationService from "@/client/services/AuthenticationService";
 import router from "@/client/router";
 
 const email = ref('');
 const password = ref('');
-const errorMessages = ref('');
 const store = useStore(); // Verwende Vuex Store
+const toast = useToast();
 
 const login = async () => {
   try {
@@ -15,10 +16,13 @@ const login = async () => {
     console.log(response.data);
     // Speichere die Benutzer-ID im Store
     await store.dispatch('login', response.data.user);
-    await router.push('/dashboard');
-  }
-  catch (error) {
-    errorMessages.value = 'Login failed. Please check your credentials and try again.';
+    toast.success('Login successful! Redirecting...')
+    setTimeout(async () => { // Wait 3 secounds before redirecting
+      await router.push('/dashboard');
+    }, 1500);
+  } catch (error) {
+    toast.error('Login failed. Please try again.');
+    console.error('Error logging in:', error);
   }
 };
 </script>
