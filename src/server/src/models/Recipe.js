@@ -18,6 +18,21 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        url: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        ingredientLines: {
+            type: DataTypes.TEXT, // Speichern Sie die Zutaten als JSON-String
+            allowNull: false,
+            get() {
+                const rawValue = this.getDataValue('ingredientLines');
+                return JSON.parse(rawValue);
+            },
+            set(value) {
+                this.setDataValue('ingredientLines', JSON.stringify(value));
+            }
+        },
         userId: {
             type: DataTypes.INTEGER,
             allowNull: false
