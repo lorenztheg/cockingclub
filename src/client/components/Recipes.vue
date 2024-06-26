@@ -1,4 +1,4 @@
-<script setup>
+<script>
 import edamamService from "@/client/services/edamamService";
 edamamService.getRecipes().then((response) => {
   console.log(response.data);

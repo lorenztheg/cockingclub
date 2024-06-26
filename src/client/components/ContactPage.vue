@@ -6,7 +6,7 @@ import FooterComponent from '@/client/components/FooterComponent.vue';
 
 <template>
   <HeadNavBarComponent />
-  <div class="contact">
+  <div class="contact" className="sm:px-16 md:px-24 lg:px-32 xl:px-48">
     <h1 class="text-2xl font-bold mb-3">Kontaktieren Sie uns</h1>
     <p>Cooking Club</p>
     <p>FH Campus Wien</p>

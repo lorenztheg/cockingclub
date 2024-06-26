@@ -5,7 +5,7 @@ import FooterComponent from '@/client/components/FooterComponent.vue';
 
 <template>
   <HeadNavBarComponent />
-  <div class="about" className="mx-32">
+  <div class="about" className="mx-32 sm:px-16 md:px-24 lg:px-32 xl:px-48">
     <h1 class="text-2xl font-bold mb-3">Über uns</h1>
     <p>Wir sind der Cooking Club, ein engagiertes Team von Studierenden der FH Campus Wien. Unser Ziel ist es, eine Plattform zu schaffen, die es Menschen ermöglicht, ihre Leidenschaft für das Kochen zu teilen und zu entdecken. Wir glauben, dass gutes Essen Menschen zusammenbringt und wir möchten diese Erfahrung mit so vielen Menschen wie möglich teilen.</p>
     <h2 class="text-xl mb-1">Unsere Mission</h2>

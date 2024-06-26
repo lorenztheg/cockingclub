@@ -5,7 +5,7 @@ import HeadNavBarComponent from '@/client/components/HeadNavBarComponent.vue';
 
 <template>
   <HeadNavBarComponent />
-  <div class="imprint">
+  <div class="imprint" className="sm:px-16 md:px-24 lg:px-32 xl:px-48">
     <h1 class="text-2xl font-bold">Impressum</h1>
     <h2 class="text-xl mb-1">Cooking Club </h2>
     <p>FH Campus Wien</p>
