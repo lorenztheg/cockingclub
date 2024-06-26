@@ -9,6 +9,7 @@ const router = useRouter();
 
 const userId = computed(() => store.state.user.id); // Annahme: Die Benutzer-ID wird im Vuex-Store gespeichert
 localStorage.setItem('userId', userId.value);
+const localUserId = localStorage.getItem('userId');
 
 const goToDashboard = () => {
   router.push('/dashboard').catch(err => console.error(err));
@@ -19,10 +20,9 @@ const goToPlanner = () => {
 };
 
 const goToProfile = async () => {
-  const localUserId = localStorage.getItem('userId');
   if (userId.value) {
     router.push(`/profile/${userId.value}`).catch(err => console.error(err));
-  } else if (localUserId){
+  } else if (localUserId !== null && userId.value === null){
     router.push(`/profile/${localUserId}`).catch(err => console.error(err)); // If user ID is not available in Vuex, use local storage
   } else {
     console.error('User ID is not available');
