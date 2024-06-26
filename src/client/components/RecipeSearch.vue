@@ -68,7 +68,7 @@ onMounted(searchRecipes);
     <div v-if="error">{{ error }}</div>
     <div v-if="recipes.length">
       <h2 class="text-xl m-2 p-2">Your Results</h2>
-      <div class="recipe-grid" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 m-10">
+      <div class="recipe-grid m-10" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <div v-for="recipe in recipes" :key="recipe.recipe.uri" class="recipe-card">
           <img :src="recipe.recipe.image" alt="Recipe Image">
           <div class="recipe-details">

@@ -6,7 +6,7 @@ import FooterComponent from '@/client/components/FooterComponent.vue';
 
 <template>
   <HeadNavBarComponent />
-  <div class="legal" className="mx-32">
+  <div class="legal" className="mx-32 sm:px-16 md:px-24 lg:px-32 xl:px-48">
     <h1 class="text-2xl font-bold mb-3">Datenschutzerklärung</h1>
     <p>Wir freuen uns sehr über Ihr Interesse an unserem Unternehmen. Datenschutz hat einen besonders hohen Stellenwert für die Geschäftsleitung der Cooking Club. Eine Nutzung der Internetseiten der Cooking Club ist grundsätzlich ohne jede Angabe personenbezogener Daten möglich. Sofern eine betroffene Person besondere Services unseres Unternehmens über unsere Internetseite in Anspruch nehmen möchte, könnte jedoch eine Verarbeitung personenbezogener Daten erforderlich werden. Ist die Verarbeitung personenbezogener Daten erforderlich und besteht für eine solche Verarbeitung keine gesetzliche Grundlage, holen wir generell eine Einwilligung der betroffenen Person ein.</p>
     <h2 class="text-xl mb-1">Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO)</h2>
