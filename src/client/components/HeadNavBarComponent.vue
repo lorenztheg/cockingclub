@@ -22,7 +22,7 @@ const goToPlanner = () => {
 const goToProfile = async () => {
   if (userId.value) {
     router.push(`/profile/${userId.value}`).catch(err => console.error(err));
-  } else if (localUserId !== null && userId.value === null){
+  } else if (localUserId !== null && userId.value !== null){
     router.push(`/profile/${localUserId}`).catch(err => console.error(err)); // If user ID is not available in Vuex, use local storage
   } else {
     console.error('User ID is not available');
