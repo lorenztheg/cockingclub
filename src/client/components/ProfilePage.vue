@@ -63,8 +63,8 @@ const deleteUser = async () => {
 <template>
   <head-nav-bar-component />
   <div class="profile-page">
-    <h2 class="text-l">Profile Page</h2>
-    <p class="text-2xl m-2">Welcome to your profile page!</p>
+    <h2 class="text-2xl mt-2.5 font-bold">Profile Page</h2>
+    <p class="text-xl m-2">Welcome to your profile page!</p>
     <div v-if="loading">Loading...</div>
     <div v-else>
       <p>Email: {{ userEmail }}</p>
@@ -83,6 +83,6 @@ button {
   border: none;
   padding: 10px 20px;
   cursor: pointer;
-  margin: 5px 2px 10px 2px;
+  margin: 8px 2px 10px 2px;
 }
 </style>

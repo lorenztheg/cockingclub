@@ -6,26 +6,26 @@ import HeadNavBarComponent from '@/client/components/HeadNavBarComponent.vue';
 <template>
   <HeadNavBarComponent />
   <div class="imprint">
-    <h1>Impressum</h1>
-    <h2>Cooking Club </h2>
+    <h1 class="text-2xl font-bold">Impressum</h1>
+    <h2 class="text-xl mb-1">Cooking Club </h2>
     <p>FH Campus Wien</p>
     <p>1100 Wien</p>
     <p>Österreich</p>
 
-    <h2>Kontakt</h2>
+    <h2 class="text-xl mb-1">Kontakt</h2>
     <p>Telefon: +43 123 456789</p>
     <p>Fax: +43 123 456789</p>
     <p>E-Mail: info@cookingclub.at</p>
 
-    <h2>Registereintrag</h2>
+    <h2 class="text-xl mb-1">Registereintrag</h2>
     <p>Eintragung im Handelsregister.</p>
     <p>Registergericht:Amtsgericht XYZ</p>
     <p>Registernummer: HRB 12345</p>
 
-    <h2>Umsatzsteuer-ID</h2>
+    <h2 class="text-xl mb-1">Umsatzsteuer-ID</h2>
     <p>Umsatzsteuer-Identifikationsnummer gemäß §27a Umsatzsteuergesetz: AT 123456789</p>
 
-    <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+    <h2 class="text-xl mb-1">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
     <p>Max Mustermann</p>
     <p>FH Campus Wien</p>
     <p>1100 Wien</p>

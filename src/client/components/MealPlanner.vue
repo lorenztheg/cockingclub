@@ -48,7 +48,7 @@ onMounted(getSavedRecipes);
   <div>
     <HeadNavBarComponent />
     <div class="MealPlanner">
-      <h2>Your Meal Plan</h2>
+      <h2 class="text-xl mb-1 mt-2.5 font-bold">Your Meal Plan</h2>
       <div v-if="savedRecipes.length">
         <div class="recipe-grid">
           <div v-for="recipe in savedRecipes" :key="recipe.uri" class="recipe-card">

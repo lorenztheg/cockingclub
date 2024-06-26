@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from 'vue';
 import edamamService from "@/client/services/edamamService";
 edamamService.getRecipes().then((response) => {
   console.log(response.data);
