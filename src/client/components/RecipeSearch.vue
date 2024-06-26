@@ -2,12 +2,14 @@
 import { ref, onMounted } from 'vue';
 import edamamService from "@/client/services/edamamService";
 import RecipeDetailsModal from "@/client/components/RecipeDetailsModal.vue";
+import { useToast } from "vue-toastification";
 
 const query = ref('');
 const health = ref('');
 const diet = ref('');
 const recipes = ref([]);
 const error = ref(null);
+const toast = useToast();
 
 const showRecipeModal = ref(false);
 const selectedRecipe = ref(null);
@@ -25,8 +27,10 @@ const saveRecipeToPlan = async (recipe) => {
   try {
     await edamamService.saveRecipe(recipe);
     console.log('Recipe saved successfully');
+    toast.success('Recipe saved successfully');
   } catch (error) {
     console.error('Error saving recipe:', error);
+    toast.error('Error saving recipe');
   }
 };
 

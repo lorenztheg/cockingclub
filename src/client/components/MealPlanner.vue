@@ -3,8 +3,13 @@ import HeadNavBarComponent from "@/client/components/HeadNavBarComponent.vue";
 import { ref, onMounted } from 'vue';
 import edamamService from "@/client/services/edamamService";
 import FooterComponent from '@/client/components/FooterComponent.vue';
+import RecipeDetailsModal from '@/client/components/RecipeDetailsModal.vue';
+import {useToast} from "vue-toastification";
 
 const savedRecipes = ref([]);
+const showRecipeModal = ref(false);
+const selectedRecipe = ref(null);
+const toast = useToast();
 
 const getSavedRecipes = async () => {
   try {
@@ -15,13 +20,25 @@ const getSavedRecipes = async () => {
   }
 };
 
-const saveRecipeToPlan = async (recipe) => {
+const removeRecipeFromPlan = async (recipeUri) => {
   try {
-    await edamamService.saveRecipe(recipe);
-    await getSavedRecipes(); // Aktualisieren Sie die gespeicherten Rezepte
+    await edamamService.removeRecipe(recipeUri);
+    await getSavedRecipes(); // Refresh the list of saved recipes
+    toast.success('Recipe removed from meal plan.')
   } catch (error) {
-    console.error('Error saving recipe:', error);
+    console.error('Error removing recipe:', error);
+    toast.error('Error removing recipe. Please try again.')
   }
+};
+
+const openRecipeDetails = (recipe) => {
+  selectedRecipe.value = recipe;
+  showRecipeModal.value = true;
+};
+
+const closeRecipeDetails = () => {
+  showRecipeModal.value = false;
+  selectedRecipe.value = null;
 };
 
 onMounted(getSavedRecipes);
@@ -38,7 +55,8 @@ onMounted(getSavedRecipes);
             <img :src="recipe.image" alt="Recipe Image">
             <h3>{{ recipe.label }}</h3>
             <p>{{ recipe.source }}</p>
-            <button @click="saveRecipeToPlan(recipe)">Add to Plan</button> <!-- Button zum Speichern -->
+            <button @click="openRecipeDetails(recipe)">Info</button> <!-- Button zum Anzeigen von Details -->
+            <button @click="removeRecipeFromPlan(recipe.uri)">Remove</button> <!-- Button zum Entfernen -->
           </div>
         </div>
       </div>
@@ -46,8 +64,11 @@ onMounted(getSavedRecipes);
         <p>No recipes in your meal plan yet.</p>
       </div>
     </div>
+    <FooterComponent />
+
+    <!-- Recipe Details Modal -->
+    <RecipeDetailsModal v-if="showRecipeModal" :recipe="selectedRecipe" @close="closeRecipeDetails" />
   </div>
-  <FooterComponent />
 </template>
 
 <style scoped>
@@ -65,5 +86,13 @@ onMounted(getSavedRecipes);
 .recipe-card img {
   width: 100%;
   height: auto;
+}
+button {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 10px;
 }
 </style>

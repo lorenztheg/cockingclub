@@ -11,13 +11,16 @@ export default {
         return API().get(`recipes/${id}`);
     },
     saveRecipe(recipe) {
-        return API.post('recipes/save', { recipe }).catch(error => {
+        return API.post('recipes/save',{recipe}).catch(error => {
             console.error("Save Recipe Error: ", error.response ? error.response.data : error.message);
             throw error;
         });
     },
-    deleteRecipe (id) {
-        return API().delete(`recipes/${id}`);
+    removeRecipe(uri) {
+        return API.delete(`recipes/remove/${encodeURIComponent(uri)}`).catch(error => {
+            console.error("Remove Recipe Error: ", error.response ? error.response.data : error.message);
+            throw error;
+        });
     },
     getSavedRecipes() {
         return API.get('recipes/saved').catch(error => {
